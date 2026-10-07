@@ -130,7 +130,6 @@ SITE.publications = [
       'assets/images/publications/lm-meter-1.jpg',
       'assets/images/publications/lm-meter-2.jpg',
       'assets/images/publications/lm-meter-3.jpg',
-      'assets/images/publications/lm-meter-4.jpg',
     ],
     links: [
       { label: 'Paper', url: 'https://doi.org/10.1145/3769102.3770614' },
