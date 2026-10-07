@@ -13,7 +13,7 @@ SITE.news = {
     { date: '2026', html: 'Recognized as an <b>ICML 2026 Golden Reviewer</b>.' },
     { date: '2026', html: 'Our paper <a href="https://arxiv.org/abs/2605.21308">Deformba</a> is accepted to <b>ICML 2026</b>.' },
     { date: '2025', html: '<a href="https://doi.org/10.1145/3769102.3770614">LM-Meter</a> is named a <b>Best Paper Award Finalist</b> at ACM/IEEE SEC 2025.' },
-    { date: '2025', html: '<a href="https://doi.org/10.1145/3769102.3770614">LM-Meter</a> is accepted to <b>ACM/IEEE SEC 2025</b>, and <a href="https://doi.org/10.1145/3769102.3774633">TinyBEV</a> to the SEC 2025 EdgeCAV Workshop.' },
+    { date: '2025', html: '<a href="https://doi.org/10.1145/3769102.3770614">LM-Meter</a> and <a href="https://doi.org/10.1145/3769102.3774633">TinyBEV</a> are accepted to <b>ACM/IEEE SEC 2025</b>.' },
     { date: '2025', html: 'Our paper <a href="https://arxiv.org/abs/2503.13858">MamBEV</a> is accepted to <b>ICLR 2025</b>.' },
     { date: '2024.04.25', html: 'Our preprint <a href="https://arxiv.org/abs/2404.16970">CarbonCP</a> is released on arXiv.' },
     { date: '2024.04.15', html: 'Passed my research qualification and became a <b>Ph.D. candidate</b>.' },

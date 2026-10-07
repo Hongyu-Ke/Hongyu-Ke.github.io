@@ -54,9 +54,8 @@ SITE.publications = [
     badge: 'ICML',
     description: 'A vision state space model with Context-Adaptive State Fusion for adaptive spatial modeling and query-to-source fusion, '
       + 'validated on image classification, object detection, instance and semantic segmentation, and BEV 3D detection.',
-    // 轮播：论文图 1、图 2、图 3、图 6、图 7
+    // 轮播：论文图 2、图 3、图 6、图 7
     cover: [
-      'assets/images/publications/deformba-1.jpg',
       'assets/images/publications/deformba-2.jpg',
       'assets/images/publications/deformba-3.jpg',
       'assets/images/publications/deformba-4.jpg',
