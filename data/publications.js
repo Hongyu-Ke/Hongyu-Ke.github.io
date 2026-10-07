@@ -142,9 +142,9 @@ SITE.publications = [
     title: 'TinyBEV: Compact Temporal Fusion for Multi-View 3D Perception',
     url: 'https://doi.org/10.1145/3769102.3774633',
     authors: ['Hongyu Ke', 'Jack Morris', 'Yongkang Liu', 'Satoshi Kitai', 'Kentaro Oguchi', 'Yi Ding', 'Haoxin Wang'],
-    venue: 'EdgeCAV Workshop @ ACM/IEEE Symposium on Edge Computing (SEC)',
+    venue: 'ACM/IEEE Symposium on Edge Computing (SEC)',
     year: 2025,
-    badge: 'EdgeCAV',
+    badge: 'SEC',
     description: 'An edge-friendly multi-camera BEV framework that replaces cross-attention with state space models and adds lightweight '
       + 'time-conditioned history fusion, so its cost stays nearly flat as the temporal context grows.',
     links: [
