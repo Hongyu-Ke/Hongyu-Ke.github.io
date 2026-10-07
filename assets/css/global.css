@@ -1,0 +1,557 @@
+@charset "utf-8";
+/* =====================================================================
+ * 站点样式
+ * 版式与配色复刻自 yiren-lu.com，其底层为 MIT 协议的 academic-homepage 模板
+ * （https://github.com/luost26/academic-homepage）。
+ * 依赖 Bootstrap 4.6（HTML 中通过 CDN 引入），这里只包含站点自定义的部分。
+ * ===================================================================== */
+
+/* ---------- 字体：Lato（本地托管，SIL OFL 1.1，见 ../fonts/OFL.txt） ---------- */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lato-400-normal-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lato-400-normal-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/lato-700-normal-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/lato-700-normal-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lato-400-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lato-400-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/lato-700-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/lato-700-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- 主题色：改这里即可整体换配色 ---------- */
+:root {
+  --wide-page-max-width: 1700px;  /* 首页 / Research 页内容区最大宽度 */
+  --site-bg: #f4f8f2;             /* 页面背景 */
+  --site-accent: #40A578;         /* 主题绿：导航当前页、终端文字、正文链接、作者高亮 */
+  --site-blue: #6096B4;           /* 社交图标、邮箱、News 展开按钮、终端 ~ */
+  --site-pink: #FFAAAA;           /* 终端 @host 与闪烁光标 */
+  --site-pub-link: #748E63;       /* 论文标题链接、[Paper] 等链接、选中的话题标签 */
+  --site-pub-title: #808D7C;      /* 无链接时的论文标题 */
+  --site-pub-more: #98A8F8;       /* “view all / All research” 链接 */
+  --site-selected: #D2E9E9;       /* 代表作高亮底色 */
+  --site-badge: #78B9B5;          /* 封面左上角的会议徽章 */
+  --site-note: #c0504d;           /* 论文 note（如 Oral / Spotlight） */
+  --site-radius: 15px;            /* 卡片圆角 */
+}
+
+/* ---------- 基础 ---------- */
+html, body {
+  background-color: var(--site-bg);
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  padding-top: 5rem;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 700;
+}
+
+.wide-page-container {
+  max-width: var(--wide-page-max-width) !important;
+}
+
+.content-width-container {
+  max-width: calc(var(--wide-page-max-width) * 10 / 12) !important;
+}
+
+.wide-page-row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.wide-page-row > [class*='col-'] {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.custom-radius {
+  border-radius: var(--site-radius);
+}
+
+.sidebar-sticky {
+  top: 80px;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+/* ---------- 导航栏 ---------- */
+.navbar {
+  opacity: 0.95;
+}
+
+.navbar .nav-item.active .nav-link {
+  color: var(--site-accent);
+  font-weight: 500;
+}
+
+.navbar .navbar-toggler {
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+.terminal-text {
+  color: var(--site-accent);
+  margin-right: 1.5rem;
+  padding-left: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.terminal-host { color: var(--site-pink); }
+.terminal-punct { color: #000; }
+.terminal-path { color: var(--site-blue); }
+.terminal-message { margin-left: 0.3em; }
+
+.terminal-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--site-pink);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ---------- 个人卡片 ---------- */
+a.follow_href {
+  color: var(--site-blue);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a.follow_href:hover {
+  color: #4a7a94;
+  text-decoration: none;
+}
+
+.avatar-container {
+  width: 200px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.avatar-container .avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.inline-badge {
+  height: 16px;
+  max-height: 1.2em;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.email-text {
+  font-family: Courier, monospace;
+}
+
+/* ---------- News ---------- */
+.news-item-date {
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+}
+
+.news-item-title {
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.news-toggle-button {
+  background: none;
+  border: none;
+  color: var(--site-blue);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.news-toggle-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ---------- About Me ---------- */
+.about-icon {
+  height: 56px;
+  margin-left: 10px;
+}
+
+.text-profile-bio a,
+a.profile_href {
+  color: var(--site-accent);
+}
+
+/* ---------- 教育 / 经历 ---------- */
+.experience-section-title {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.experience-item-title {
+  color: #212529;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.experience-logos {
+  gap: 0.25rem;
+}
+
+.experience-inline-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+}
+
+.experience-item-details {
+  color: #495057;
+  line-height: 1.45;
+}
+
+@media (max-width: 991.98px) {
+  .experience-column + .experience-column {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .experience-inline-logo {
+    height: 16px;
+  }
+
+  .experience-item-details {
+    display: block !important;
+  }
+
+  .experience-item-details .no-break {
+    display: block;
+    margin-top: 0.15rem;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* ---------- 论文列表 ---------- */
+.pub-link {
+  color: var(--site-pub-more);
+}
+
+.pub-card {
+  overflow: hidden; /* 让高亮行 / 移动端背景图跟随卡片圆角 */
+}
+
+a.item_link {
+  color: var(--site-pub-link);
+}
+
+.pub-entry {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.pub-entry.is-last-visible {
+  border-bottom: 0;
+}
+
+.pub-entry.selected-publication {
+  background-color: var(--site-selected);
+}
+
+.pub-cover-col {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.pub-body-col {
+  flex: 1 1 0%;
+  min-width: 0;
+  padding: 1rem 1rem 1rem 0;
+}
+
+.pub-title {
+  color: var(--site-pub-title);
+}
+
+.pub-author-me {
+  color: var(--site-accent);
+}
+
+.pub-note {
+  color: var(--site-note);
+  font-weight: 700;
+  margin-left: 0.25rem;
+}
+
+.publication-cover {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.publication-cover-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  background-color: #f3f3f3;
+}
+
+.bubble-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.pub-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--site-badge);
+  color: #fff;
+  font-size: 0.7em;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.publication-topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.publication-topic-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid #d5dfd3;
+  background-color: #f7faf7;
+  color: #60705c;
+  font-size: 0.74rem;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.publication-topic-link:hover {
+  color: #4f6549;
+  background-color: #edf5eb;
+  border-color: #b8c8b0;
+  text-decoration: none;
+}
+
+.publication-topic-link.is-active {
+  background-color: var(--site-pub-link);
+  border-color: var(--site-pub-link);
+  color: #fff;
+}
+
+@media (min-width: 1200px) {
+  .pub-cover-col {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+}
+
+/* 手机：封面图变成整行的淡背景，视频封面放到文字上方 */
+@media (max-width: 767.98px) {
+  .pub-entry {
+    display: block;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--pub-cover-bg, none);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .pub-entry.selected-publication {
+    background-image: linear-gradient(color-mix(in srgb, var(--site-selected) 90%, transparent), color-mix(in srgb, var(--site-selected) 90%, transparent)), var(--pub-cover-bg, none);
+  }
+
+  .pub-cover-col {
+    display: none;
+  }
+
+  .pub-cover-col.has-video {
+    display: block;
+    max-width: none;
+    padding: 1rem 1.5rem 0;
+  }
+
+  .pub-cover-col.has-video .publication-cover-video {
+    margin-bottom: 1rem;
+  }
+
+  .pub-body-col {
+    padding: 1rem 1.5rem;
+  }
+
+  .pub-entry.has-badge .pub-cover-col:not(.has-video) + .pub-body-col {
+    padding-top: 2.25rem; /* 给左上角徽章留出位置 */
+  }
+
+  .pub-cover-col.has-video + .pub-body-col {
+    padding-top: 0;
+  }
+}
+
+/* ---------- Research 页 ---------- */
+.research-summary-topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.research-summary-topic {
+  display: inline-block;
+  padding: 0.35em 0.75em;
+  margin-right: 0.5em;
+  margin-bottom: 0.65em;
+  border-radius: 999px;
+  background-color: #e9ecef;
+  color: #495057;
+  font-size: 0.75rem;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: all 0.2s;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.research-summary-topic:hover {
+  color: #566f53;
+  background-color: #eef5ec;
+  border-color: #d2dfcd;
+  text-decoration: none;
+}
+
+.research-summary-topic.is-active {
+  background-color: var(--site-pub-link);
+  border-color: var(--site-pub-link);
+  color: #fff;
+}
+
+.research-summary-title {
+  font-weight: 700;
+}
+
+.research-summary-paragraph {
+  color: #495057;
+  line-height: 1.6;
+}
+
+.research-summary-paragraph > p:last-child {
+  margin-bottom: 0;
+}
+
+.research-summary-highlight {
+  display: inline;
+  padding: 0 0.18em;
+  border-radius: 0.3em;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(255, 235, 130, 0.95) 35%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.selected-legend {
+  background-color: var(--site-selected);
+}
+
+@media (max-width: 576px) {
+  .research-summary-topic {
+    font-size: 0.72rem;
+    margin-right: 0.4em;
+    margin-bottom: 0.5em;
+  }
+}
+
+/* ---------- 页脚 ---------- */
+.footer a {
+  color: var(--site-accent);
+}
+
+@media (min-width: 768px) {
+  .footer-credits {
+    white-space: nowrap;
+  }
+}
