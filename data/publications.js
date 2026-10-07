@@ -103,7 +103,6 @@ SITE.publications = [
     // 轮播：论文图 1、图 2、整体架构图（来自 GitHub 仓库）、图 4、图 5
     cover: [
       'assets/images/publications/mambev-1.jpg',
-      'assets/images/publications/mambev-2.jpg',
       'assets/images/publications/mambev-3.jpg',
       'assets/images/publications/mambev-4.jpg',
       'assets/images/publications/mambev-5.jpg',
@@ -127,9 +126,9 @@ SITE.publications = [
     description: 'A real-time on-device LLM latency profiler with phase- and kernel-level tracing, enabling fine-grained bottleneck analysis on mobile hardware.',
     // 轮播：论文图 2(a)、图 4(a)、图 10(a)、图 10(b)
     cover: [
-      'assets/images/publications/lm-meter-1.jpg',
-      'assets/images/publications/lm-meter-2.jpg',
-      'assets/images/publications/lm-meter-3.jpg',
+      'assets/images/publications/lm-meter-1.png',
+      'assets/images/publications/lm-meter-2.png',
+      'assets/images/publications/lm-meter-3.png',
     ],
     links: [
       { label: 'Paper', url: 'https://doi.org/10.1145/3769102.3770614' },
