@@ -36,7 +36,9 @@ SITE.topics = [
  *   badge        封面左上角的小徽章（会议简称）
  *   note         年份后面的补充说明，如 Oral / Spotlight / Best Paper Finalist
  *   description  一两句话的简介
- *   cover        封面图（png / jpg / gif / svg，放在 assets/images/publications/）；不填会根据标题自动生成彩色气泡图
+ *   cover        封面图（png / jpg / gif / svg，放在 assets/images/publications/）；不填会根据标题自动生成彩色气泡图；
+ *                写成数组（如 ['a.jpg', 'b.jpg']）会自动轮播，各张图尺寸最好一致
+ *   coverInterval 轮播时每张图停留的毫秒数，默认 3000
  *   video        封面视频（mp4，放在 assets/videos/）；填了会替代 cover，cover 则作为视频加载前的海报帧
  *   links        链接列表，显示为 [Paper] [Code] ……
  *   topics       研究方向 slug 列表（见上方 SITE.topics）
@@ -52,7 +54,14 @@ SITE.publications = [
     badge: 'ICML',
     description: 'A vision state space model with Context-Adaptive State Fusion for adaptive spatial modeling and query-to-source fusion, '
       + 'validated on image classification, object detection, instance and semantic segmentation, and BEV 3D detection.',
-    cover: 'assets/images/publications/deformba.png',
+    // 轮播：论文图 1、图 2、图 3、图 6、图 7
+    cover: [
+      'assets/images/publications/deformba-1.jpg',
+      'assets/images/publications/deformba-2.jpg',
+      'assets/images/publications/deformba-3.jpg',
+      'assets/images/publications/deformba-4.jpg',
+      'assets/images/publications/deformba-5.jpg',
+    ],
     links: [
       { label: 'Paper', url: 'https://arxiv.org/abs/2605.21308' },
       { label: 'OpenReview', url: 'https://openreview.net/forum?id=4Anq3hEfaO' },
@@ -70,7 +79,13 @@ SITE.publications = [
     badge: 'ICDM',
     description: 'FedTAR infers each client\'s task preference from MoE routing signals and aggregates updates within and across task clusters, '
       + 'preserving expert specialization in federated fine-tuning of LLMs on heterogeneous data.',
-    cover: 'assets/images/publications/fedtar.png',
+    // 轮播：论文图 1（a、b 并排）、图 2、图 3、图 5（MMLU）
+    cover: [
+      'assets/images/publications/fedtar-1.jpg',
+      'assets/images/publications/fedtar-2.jpg',
+      'assets/images/publications/fedtar-3.jpg',
+      'assets/images/publications/fedtar-4.jpg',
+    ],
     links: [
       { label: 'Paper', url: 'https://arxiv.org/abs/2609.13395' },
     ],
@@ -86,7 +101,14 @@ SITE.publications = [
     badge: 'ICLR',
     description: 'A BEV perception framework that learns efficient spatio-temporal world representations from multi-camera inputs with state space models, '
       + 'replacing Transformer-style attention with linear Mamba-based modeling for scalable 3D detection.',
-    cover: 'assets/images/publications/mambev.png',
+    // 轮播：论文图 1、图 2、整体架构图（来自 GitHub 仓库）、图 4、图 5
+    cover: [
+      'assets/images/publications/mambev-1.jpg',
+      'assets/images/publications/mambev-2.jpg',
+      'assets/images/publications/mambev-3.jpg',
+      'assets/images/publications/mambev-4.jpg',
+      'assets/images/publications/mambev-5.jpg',
+    ],
     links: [
       { label: 'Paper', url: 'https://arxiv.org/abs/2503.13858' },
       { label: 'OpenReview', url: 'https://openreview.net/forum?id=MvEkN2ejZ1' },
@@ -104,7 +126,13 @@ SITE.publications = [
     badge: 'SEC',
     note: 'Best Paper Award Finalist',
     description: 'A real-time on-device LLM latency profiler with phase- and kernel-level tracing, enabling fine-grained bottleneck analysis on mobile hardware.',
-    cover: 'assets/images/publications/lm-meter.png',
+    // 轮播：论文图 2(a)、图 4(a)、图 10(a)、图 10(b)
+    cover: [
+      'assets/images/publications/lm-meter-1.jpg',
+      'assets/images/publications/lm-meter-2.jpg',
+      'assets/images/publications/lm-meter-3.jpg',
+      'assets/images/publications/lm-meter-4.jpg',
+    ],
     links: [
       { label: 'Paper', url: 'https://doi.org/10.1145/3769102.3770614' },
       { label: 'arXiv', url: 'https://arxiv.org/abs/2510.06126' },

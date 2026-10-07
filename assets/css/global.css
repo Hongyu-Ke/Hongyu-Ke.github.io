@@ -380,6 +380,56 @@ a.item_link {
   overflow: hidden;
 }
 
+/* 封面轮播：所有图片叠在同一格里，当前这张淡入显示 */
+.cover-slideshow {
+  position: relative;
+  display: grid;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cover-slideshow .cover-slide {
+  grid-area: 1 / 1;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  box-shadow: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.cover-slideshow .cover-slide.is-active {
+  opacity: 1;
+}
+
+.cover-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.cover-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.cover-dot.is-active {
+  background-color: var(--site-pub-link);
+}
+
 .pub-badge {
   position: absolute;
   top: 8px;
@@ -435,7 +485,7 @@ a.item_link {
   }
 }
 
-/* 手机：封面图变成整行的淡背景，视频封面放到文字上方 */
+/* 手机：单张封面图变成整行的淡背景，视频和轮播封面放到文字上方 */
 @media (max-width: 767.98px) {
   .pub-entry {
     display: block;
@@ -452,13 +502,14 @@ a.item_link {
     display: none;
   }
 
-  .pub-cover-col.has-video {
+  .pub-cover-col.has-media {
     display: block;
     max-width: none;
     padding: 1rem 1.5rem 0;
   }
 
-  .pub-cover-col.has-video .publication-cover-video {
+  .pub-cover-col.has-media .publication-cover-video,
+  .pub-cover-col.has-media .cover-slideshow {
     margin-bottom: 1rem;
   }
 
@@ -466,11 +517,11 @@ a.item_link {
     padding: 1rem 1.5rem;
   }
 
-  .pub-entry.has-badge .pub-cover-col:not(.has-video) + .pub-body-col {
+  .pub-entry.has-badge .pub-cover-col:not(.has-media) + .pub-body-col {
     padding-top: 2.25rem; /* 给左上角徽章留出位置 */
   }
 
-  .pub-cover-col.has-video + .pub-body-col {
+  .pub-cover-col.has-media + .pub-body-col {
     padding-top: 0;
   }
 }

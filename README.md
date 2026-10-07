@@ -26,6 +26,7 @@
 
 - **论文**：`selected: true` 的论文会出现在首页，并在 Research 页高亮；作者名与 `highlightName` 一致时自动绿色加粗；名字后加 `*` 自动显示 “(* equal contribution)”；没有封面图时会根据标题生成一张彩色气泡图。
 - **视频封面**：把 mp4 放进 `assets/videos/`，在论文里写 `video: 'assets/videos/xxx.mp4'`，滚动到附近才加载，自动静音循环播放。
+- **封面轮播**：把 `cover` 写成图片数组（如 `['a.jpg', 'b.jpg']`）就会自动淡入淡出轮播，鼠标悬停时暂停；各张图尺寸最好一致。
 - **数学公式**：在 `data/profile.js` 里把 `math` 设为 `true`，标题和简介里就能写 `$...$`。
 
 图片放在 `assets/images/`：头像、学校 / 公司 logo、论文封面。目前都是占位图，换成你自己的即可。

@@ -255,14 +255,27 @@
     return `<svg class="publication-cover bubble-cover rounded-sm" viewBox="0 0 300 200" role="img" aria-label="${escapeHtml(title)}"><rect width="300" height="200" fill="#f7faf7"/>${circles}</svg>`;
   }
 
+  // cover 可以是一张图，也可以是图片数组（自动轮播）
+  function coverList(pub) {
+    return [].concat(pub.cover || []);
+  }
+
   function renderCover(pub) {
     const alt = escapeHtml(stripTags(pub.title));
+    const covers = coverList(pub);
     if (pub.video) {
-      const poster = pub.cover ? ` poster="${pub.cover}"` : '';
+      const poster = covers.length ? ` poster="${covers[0]}"` : '';
       return `<video class="publication-cover publication-cover-video rounded-sm" data-src="${pub.video}"${poster} muted loop playsinline autoplay preload="none" aria-label="${alt}"></video>`;
     }
-    if (pub.cover) {
-      return `<img class="publication-cover rounded-sm" src="${pub.cover}" alt="${alt}" loading="lazy">`;
+    if (covers.length > 1) {
+      const slides = covers.map((src, i) =>
+        `<img class="publication-cover cover-slide${i === 0 ? ' is-active' : ''}" src="${src}" alt="${alt} (${i + 1}/${covers.length})" loading="lazy">`).join('');
+      const dots = covers.map((src, i) =>
+        `<button type="button" class="cover-dot${i === 0 ? ' is-active' : ''}" data-slide="${i}" aria-label="Show image ${i + 1} of ${covers.length}"></button>`).join('');
+      return `<div class="cover-slideshow rounded-sm" data-interval="${pub.coverInterval || 3000}">${slides}<div class="cover-dots">${dots}</div></div>`;
+    }
+    if (covers.length) {
+      return `<img class="publication-cover rounded-sm" src="${covers[0]}" alt="${alt}" loading="lazy">`;
     }
     return bubbleCover(stripTags(pub.title));
   }
@@ -279,12 +292,15 @@
     const links = (pub.links || []).map((l) => `<a class="item_link" href="${l.url}"${targetAttrs(l.url)}>[${l.label}]</a>`).join(' ');
     const topics = (pub.topics || []).map((slug) =>
       `<a class="publication-topic-link js-topic-link" href="${topicHref(slug)}" data-topic="${slug}"># ${topicLabel(slug)}</a>`).join('');
-    // 图片封面在手机上作为整行的淡背景，由 initLazyMedia() 在滚动到附近时再加载
-    const coverData = pub.cover && !pub.video ? ` data-cover="${pub.cover}"` : '';
+    // 视频和轮播封面在手机上照常显示在文字上方；单张图片封面在手机上变成整行的淡背景，
+    // 由 initLazyMedia() 在滚动到附近时再加载
+    const covers = coverList(pub);
+    const hasMedia = Boolean(pub.video) || covers.length > 1;
+    const coverData = covers.length === 1 && !pub.video ? ` data-cover="${covers[0]}"` : '';
 
     return `
             <div class="${classes.join(' ')}" data-publication-entry data-topics="${(pub.topics || []).join('|')}"${coverData}>
-              <div class="pub-cover-col${pub.video ? ' has-video' : ''}">${renderCover(pub)}</div>
+              <div class="pub-cover-col${hasMedia ? ' has-media' : ''}">${renderCover(pub)}</div>
               <div class="pub-body-col">
                 <h5 class="pub-title mt-0 mb-0 font-weight-normal">${title}</h5>
                 ${authors ? `<p class="mt-0 mb-0 small">${authors}</p>` : ''}
@@ -435,6 +451,58 @@
     videos.forEach((video) => videoObserver.observe(video));
   }
 
+  // 封面轮播：淡入淡出自动切换；鼠标悬停、滚出屏幕或切到别的标签页时暂停，点底部圆点可跳到任意一张
+  function initSlideshows() {
+    document.querySelectorAll('.cover-slideshow').forEach((show) => {
+      const slides = show.querySelectorAll('.cover-slide');
+      const dots = show.querySelectorAll('.cover-dot');
+      const interval = Number(show.dataset.interval) || 3000;
+      let index = 0;
+      let timer = null;
+      let visible = !('IntersectionObserver' in window);
+      let hovered = false;
+
+      const goTo = (next) => {
+        slides[index].classList.remove('is-active');
+        dots[index].classList.remove('is-active');
+        index = (next + slides.length) % slides.length;
+        slides[index].classList.add('is-active');
+        dots[index].classList.add('is-active');
+      };
+      const stop = () => {
+        clearInterval(timer);
+        timer = null;
+      };
+      const start = () => {
+        stop();
+        if (visible && !hovered && !document.hidden) timer = setInterval(() => goTo(index + 1), interval);
+      };
+
+      dots.forEach((dot) => dot.addEventListener('click', () => {
+        goTo(Number(dot.dataset.slide));
+        start();
+      }));
+      show.addEventListener('mouseenter', () => {
+        hovered = true;
+        stop();
+      });
+      show.addEventListener('mouseleave', () => {
+        hovered = false;
+        start();
+      });
+      document.addEventListener('visibilitychange', start);
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((records) => {
+          visible = records[records.length - 1].isIntersecting;
+          start();
+        }).observe(show);
+      } else {
+        start();
+      }
+    });
+  }
+
   // Research 页按研究方向筛选；URL 形如 research.html?topic=robotics，可直接分享
   function initTopicFilter() {
     if (!document.querySelector('[data-publication-filter-root]')) return;
@@ -529,6 +597,7 @@
 
   initNewsToggle();
   initLazyMedia();
+  initSlideshows();
   initTopicFilter();
   loadMath();
 })();
