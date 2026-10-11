@@ -70,19 +70,17 @@ SITE.education = [
     name: 'Georgia State University',
     logos: ['assets/images/logos/gsu.png'],
     details: 'AMAI Lab, advised by Dr. Haoxin Wang<br/>Ph.D. in Computer Science',
-    period: 'Jan. 2023 - present',
+    period: '2023 - present',
   },
   {
     name: 'University at Buffalo',
     logos: ['assets/images/logos/ub.png'],
     details: 'M.S. in Computer Science and Engineering',
-    period: 'Jan. 2022 - Dec. 2022',
   },
   {
     name: 'Stony Brook University',
     logos: ['assets/images/logos/sbu.png'],
     details: 'B.S. in Applied Mathematics &amp; Statistics<br/>B.S. in Mathematics',
-    period: 'Jan. 2018 - Dec. 2021',
   },
 ];
 
@@ -92,6 +90,6 @@ SITE.experience = [
     name: 'GSU &amp; Toyota Motor North America',
     logos: ['assets/images/logos/gsu.png'],
     details: 'Department of Computer Science<br/>Research Assistant',
-    period: 'Jan. 2023 - present',
+    period: '2023 - present',
   },
 ];
