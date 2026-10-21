@@ -54,10 +54,8 @@ SITE.about = {
   html: `
     <p>I am Hongyu Ke (柯泓宇), a Ph.D. candidate in Computer Science at <a href="https://www.gsu.edu/">Georgia State University</a>,
     where I work in the <a href="https://www.amai-gsu.us/">Advanced Mobility &amp; Augmented Intelligence (AMAI) Lab</a> under the
-    supervision of <a href="https://www.amai-gsu.us/group/">Dr. Haoxin Wang</a>. In collaboration with Toyota Motor North America, I develop architectures for autonomous driving,
-    spanning multi-view 3D perception, bird's-eye-view (BEV) representation learning, temporal fusion, and efficient
-    adaptation of large models. My research interests include <b>autonomous driving foundation models</b>,
-    <b>BEV representations</b>, <b>vision-language-action models</b>, and <b>efficient multimodal AI systems</b>.</p>
+    supervision of <a href="https://www.amai-gsu.us/group/">Dr. Haoxin Wang</a>. My research interests include <b>autonomous driving</b>,
+    <b>vision-language-action models</b>, and <b>efficient multimodal AI systems</b>.</p>
     <p>Prior to that, I received my M.S. in Computer Science and Engineering from the <a href="https://www.buffalo.edu/">University at Buffalo</a>
     in 2022, and my B.S. in Applied Mathematics &amp; Statistics and B.S. in Mathematics from
     <a href="https://www.stonybrook.edu/">Stony Brook University</a> in 2021.</p>
