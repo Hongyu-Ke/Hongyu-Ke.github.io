@@ -9,6 +9,8 @@ window.SITE = window.SITE || {};
 SITE.news = {
   initiallyShown: 5,
   items: [
+    { date: '2026', html: 'Our paper <a href="https://arxiv.org/abs/2609.13395">Task-Aware Federated Fine-Tuning for MoE-based LLMs</a> has been awarded the <b>Best Paper Runner-UP</b> at ICDM 2026!' },
+    { date: '2026', html: 'Received the <b>Martin D. Fraser Award</b>!' },
     { date: '2026', html: 'Our paper <a href="https://arxiv.org/abs/2609.13395">Task-Aware Federated Fine-Tuning for MoE-based LLMs</a> is accepted to <b>ICDM 2026</b>.' },
     { date: '2026', html: 'Recognized as an <b>ICML 2026 Golden Reviewer</b>.' },
     { date: '2026', html: 'Our paper <a href="https://arxiv.org/abs/2605.21308">Deformba</a> is accepted to <b>ICML 2026</b>.' },

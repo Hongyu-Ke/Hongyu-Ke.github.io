@@ -76,6 +76,7 @@ SITE.publications = [
     venue: 'IEEE International Conference on Data Mining (ICDM)',
     year: 2026,
     badge: 'ICDM',
+    note: 'Best Paper Runner-UP',
     description: 'FedTAR infers each client\'s task preference from MoE routing signals and aggregates updates within and across task clusters, '
       + 'preserving expert specialization in federated fine-tuning of LLMs on heterogeneous data.',
     // 轮播：论文图 1（a、b 并排）、图 2、图 3、图 5（MMLU）
