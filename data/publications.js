@@ -123,7 +123,7 @@ SITE.publications = [
     venue: 'ACM/IEEE Symposium on Edge Computing (SEC)',
     year: 2025,
     badge: 'SEC',
-    note: 'Best Paper Award Finalist',
+    note: 'Best Paper Finalist',
     description: 'A real-time on-device LLM latency profiler with phase- and kernel-level tracing, enabling fine-grained bottleneck analysis on mobile hardware.',
     // 轮播：论文图 2(a)、图 4(a)、图 10(a)、图 10(b)
     cover: [
