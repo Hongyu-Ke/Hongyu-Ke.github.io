@@ -50,7 +50,7 @@ SITE.profile = {
 
 SITE.about = {
   title: 'About Me',
-  icon: 'assets/images/about-icon.svg', // 标题右边的小图，不需要就设为 ''
+  icon: '', // 标题右边的小图，不需要就设为 ''
   html: `
     <p>I am Hongyu Ke (柯泓宇), a Ph.D. candidate in Computer Science at <a href="https://www.gsu.edu/">Georgia State University</a>,
     where I work in the <a href="https://www.amai-gsu.us/">Advanced Mobility &amp; Augmented Intelligence (AMAI) Lab</a> under the
